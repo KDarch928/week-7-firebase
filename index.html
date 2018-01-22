@@ -15,7 +15,7 @@
         <div class="container">
 
           <!-- Jumbotron -->
-          <div class="jumbotron" style="background-color: black; color: white">
+          <div class="jumbotron" id="titleHeader" style="margin-top: 1%;">
             <h1 class="text-center">Anytime is Train Time</h1>
             <h3 class="text-center">Choo Choo.Chee Chee.</h3>
           </div>
@@ -24,12 +24,12 @@
 
             <div class="col-lg-12">
 
-            <!-- Current Employees-->
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
+            <!-- Current Trians-->
+              <div class="panel panel-primary rounded" id="panelBoarder" style="background-color: #fff;">
+                <div class="panel-heading" id="panelHeader">
+                  <h5 class="panel-title" id="pMargin"><strong>Current Train Schedule</strong></h5>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" id="pMargin">
                   <table class="table table-hover" id='train-table'>
                     <thead>
                       <tr>
@@ -46,13 +46,17 @@
                   </table>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <!-- Add Employee  -->
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><strong>Add Train</strong></h3>
+          <div class="row">    
+            <div class="col-lg-12" style="margin-top: 3%;">
+              <!-- Add Trains  -->
+              <div class="panel panel-primary rounded" id="panelBoarder" style="background-color: #fff;">
+                <div class="panel-heading" id="panelHeader">
+                  <h5 class="panel-title" id="pMargin"><strong>Add Train</strong></h5>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" id="pMargin">
 
                   <!-- Entry Form -->
                   <form>
@@ -74,13 +78,9 @@
                     </div>
                     <button class="btn btn-primary" id="add-train-btn" type="submit">Submit</button>
                   </form>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
 
         </div>

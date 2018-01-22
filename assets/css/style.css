@@ -1,3 +1,26 @@
 body {
-	background-image: url("../images/bg-light.jpg");
+	background-image: url("../images/train-image.jpg");
+	background-size: 100%;
+}
+
+#titleHeader {
+	background-color: #802b00;
+	color: #fff;
+}
+
+#panelBoarder {
+	border: solid;
+	border-color: #008ae6;
+}
+
+#panelHeader {
+	background-color: #008ae6;
+	color: #fff;
+}
+
+#pMargin {
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-right: 2%;
+	padding-left: 2%;
 }
