@@ -26,4 +26,23 @@ $("#add-train-btn").on("click",function (event) {
     console.log(startTime);
     console.log(freq);
 
+    //push input to firebase database
+    database.ref().push({
+        name: trainNam,
+        dest: dest,
+        start: startTime,
+        freq: freq,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
+
+    //alert that a new train has been added
+    alert("Train successfully added");
+
+
+    //clear out the fields
+    $("#train-name-input").val("");
+    $("#dest-input").val("");
+    $("#time-input").val("");
+    $("#freq-input").val("");
+
 });
