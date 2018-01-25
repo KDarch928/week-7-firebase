@@ -82,7 +82,7 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm a"));
 
     // Add each train's data into the table
-    $("#train-table > tbody").append("<tr><td>" + trainNam + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + moment(nextTrain).format("hh:mm a") + "</td><td>" + minTillTrain + "</td><td><button type='button' class='btn btn-link' id='remove' value='"+ trainNam + "'>Remove</button></td></tr>");
+    $("#train-table > tbody").append("<tr><td>" + trainNam + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + moment(nextTrain).format("hh:mm a") + "</td><td>" + minTillTrain + "</td><td><button type='button' class='btn btn-link' id='remove' value='"+ childSnapshot.key + "'>Remove</button></td></tr>");
 
     $(document).ready(function () {
 
@@ -91,6 +91,11 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
             alert(data);
             var test = childSnapshot;
             console.log(test);
+            if(data === childSnapshot.key){
+                alert("True");
+
+
+            }
 
         });
 
