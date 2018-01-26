@@ -21,11 +21,6 @@ $("#add-train-btn").on("click",function (event) {
     var startTime = moment($("#time-input").val().trim(), "HH:mm").format("h:mm a");
     var freq = $("#freq-input").val().trim();
 
-    console.log(trainNam);
-    console.log(dest);
-    console.log(startTime);
-    console.log(freq);
-
     //push input to firebase database
     database.ref().push({
         name: trainNam,
@@ -34,9 +29,6 @@ $("#add-train-btn").on("click",function (event) {
         freq: freq,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
-
-    //alert that a new train has been added
-    alert("Train successfully added");
 
 
     //clear out the fields
@@ -59,27 +51,21 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 
     // First Time (pushed back 1 year to make sure it comes before current time)
     var startTimeConverted = moment(starTime, "hh:mm").subtract(1, "years");
-    console.log(startTimeConverted);
 
     // Current Time
     var currTime = moment();
-    console.log("CURRENT TIME: " + moment(currTime).format("hh:mm"));
 
     // Difference between the times
     var diffTime = moment().diff(moment(startTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
 
     // Time apart (remainder)
     var timeRemainder = diffTime % freq;
-    console.log(timeRemainder);
 
     // Minute Until Train
     var minTillTrain = freq - timeRemainder;
-    console.log("MINUTES TILL TRAIN: " + minTillTrain);
 
     // Next Train
     var nextTrain = moment().add(minTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm a"));
 
     // Add each train's data into the table
     $("#train-table > tbody").append("<tr><td>" + trainNam + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + moment(nextTrain).format("hh:mm a") + "</td><td>" + minTillTrain + "</td><td><button type='button' class='btn btn-link' id='remove' value='"+ childSnapshot.key + "'>Remove</button></td></tr>");
@@ -88,26 +74,12 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 
         $(".btn").on("click", function (event) {
             var data = $(this).val().trim();
-            alert(data);
-            var test = childSnapshot;
-            console.log(test);
-            if(data === childSnapshot.key){
-                alert("True");
-
-
-            }
+            // alert(data);
+            database.ref().child(data).remove();
+            location.reload();
 
         });
 
     });
 });
-
-// $(document).ready(function () {
-
-//     $(".btn").on("click",function (event) {
-//         var data = $(this).val().trim();
-//         alert(data);
-//     });
-
-// });
 
